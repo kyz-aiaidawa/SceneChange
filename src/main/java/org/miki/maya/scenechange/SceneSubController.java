@@ -29,11 +29,12 @@ public class SceneSubController implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
+        MainApp.data = "FromSceneSub";
         System.out.println("You clicked me!");
         label.setText("Hello World!");
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SceneMain.fxml"));
         Scene sceneSub = new Scene(root);
-        // get the stage infomation
+        //  
         Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(sceneSub);
         stage.show();
@@ -41,7 +42,7 @@ public class SceneSubController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        label.setText(MainApp.data);
     }
 
 }

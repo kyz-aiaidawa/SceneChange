@@ -27,17 +27,19 @@ public class SceneMainController implements Initializable {
     private Label label;
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
+        MainApp.data = "FromSceneMain";
         System.out.println("You clicked me!");
         label.setText("Hello World!");
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SceneSub.fxml"));
         Scene sceneSub = new Scene(root);
-        // get the stage infomation
-        Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        //  
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(sceneSub);
         stage.show();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        label.setText(MainApp.data);
+    }
 }
