@@ -8,6 +8,7 @@ package org.miki.maya.scenechange;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,11 @@ public class SceneMainController implements Initializable {
     @FXML
     private Label label;
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
+    private void onBtnQuit(ActionEvent event) {
+        MainApp.quitAll();
+    }
+    @FXML
+    private void onBtnTask1(ActionEvent event) throws IOException {
         MainApp.data = "FromSceneMain";
         System.out.println("You clicked me!");
         label.setText("Hello World!");
@@ -36,6 +41,10 @@ public class SceneMainController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(sceneSub);
         stage.show();
+    }
+    @FXML
+    private void onBtnTask2(ActionEvent event) {
+        
     }
 
     @Override

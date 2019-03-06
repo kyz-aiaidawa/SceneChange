@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" style="-fx-background-color: pink;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="org.miki.maya.scenechange.SceneSubController">
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.miki.maya.scenechange.SceneSubController">
     <children>
         <Button fx:id="button" layoutX="126" layoutY="90" onAction="#handleButtonAction" text="Click Me!" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        <Label fx:id="label" layoutX="14.0" layoutY="168.0" minHeight="16" minWidth="69" />
     </children>
 </AnchorPane>
