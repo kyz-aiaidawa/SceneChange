@@ -8,7 +8,6 @@ package org.miki.maya.scenechange;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +38,7 @@ public class SceneMainController implements Initializable {
         Scene sceneSub = new Scene(root);
         //  
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("SceneSub from SceneMainController");
         stage.setScene(sceneSub);
         stage.show();
     }

@@ -17,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  *
@@ -26,11 +25,11 @@ import javafx.stage.Window;
 public class SceneSubController implements Initializable {
 
     @FXML
-    private Label label = new Label("");
+    private Label label;
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-        preStatus(event);
+
         MainApp.data = "FromSceneSub";
         System.out.println("You clicked me!");
         label.setText("Hello World!");
@@ -38,37 +37,42 @@ public class SceneSubController implements Initializable {
         Scene sceneSub = new Scene(root);
         //  
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("SceneMain from SceneSubController");
         stage.setScene(sceneSub);
+        //
+        stage.showingProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("oldValue = " + oldValue + " newValue = " + newValue);
+            if (oldValue == true && newValue == false) {
+                saveStatus();
+            }
+        });
+        //
+        //addCloseListener(stage);
         stage.show();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         label.setText(MainApp.data);
-
     }
 
     private void saveStatus() {
-        System.out.println("SceneSubController... saveStatus() ");
+        System.out.println("SceneSubController... saveStatus() " + this.hashCode() + " ");
     }
 
-    private void preStatus(ActionEvent event) {
-        Node name = (Node) event.getSource();
-        Scene scene = name.getScene();
-        if (scene != null) {
-            Stage stage = (Stage) scene.getWindow();
-            if (stage != null) {
-                stage.showingProperty().addListener((observable, oldValue, newValue) -> {
-                    System.out.println("oldValue = " + oldValue + " newValue = " + newValue);
-                    if (oldValue == true && newValue == false) {
-                        saveStatus();
-                    }
-                });
-            } else {
-                System.out.println("preStatus stage is null ");
-            }
+    private void addCloseListener(Stage stage) {
+
+        if (stage != null) {
+            stage.showingProperty().addListener((observable, oldValue, newValue) -> {
+                System.out.println("oldValue = " + oldValue + " newValue = " + newValue);
+                if (oldValue == true && newValue == false) {
+                    saveStatus();
+                }
+            });
         } else {
-            System.out.println("preStatus scene is null");
+            System.out.println("addCloseListener stage is null ");
         }
+
     }
+
 }
